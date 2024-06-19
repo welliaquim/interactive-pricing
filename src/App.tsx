@@ -43,6 +43,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     handleTotalInfo(inputValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [yearBilling]);
 
   return (
