@@ -22,22 +22,40 @@ const App: React.FC = () => {
     console.log(yearBilling);
   };
 
+  // TO DO: REMOVE USEEFFECT, IMPROVE SETPRICE LOGIC
+
   const handleTotalInfo = (value: number) => {
-    if (value === 1) {
-      setNumberViews("10K");
-      setPrice(yearBilling ? (8 - 8 * 0.25) * 12 : 8);
-    } else if (value === 2) {
-      setNumberViews("50K");
-      setPrice(yearBilling ? (12 - 12 * 0.25) * 12 : 12);
-    } else if (value === 3) {
-      setNumberViews("100K");
-      setPrice(yearBilling ? (16 - 16 * 0.25) * 12 : 16);
-    } else if (value === 4) {
-      setNumberViews("500K");
-      setPrice(yearBilling ? (24 - 24 * 0.25) * 12 : 24);
-    } else if (value === 5) {
-      setNumberViews("1M");
-      setPrice(yearBilling ? (36 - 36 * 0.25) * 12 : 36);
+    switch (value) {
+      case 1: {
+        setNumberViews("10K");
+        setPrice(yearBilling ? (8 - 8 * 0.25) * 12 : 8);
+        break;
+      }
+      case 2: {
+        setNumberViews("50K");
+        setPrice(yearBilling ? (12 - 12 * 0.25) * 12 : 12);
+        break;
+      }
+      case 3: {
+        setNumberViews("100K");
+        setPrice(yearBilling ? (16 - 16 * 0.25) * 12 : 16);
+        break;
+      }
+      case 4: {
+        setNumberViews("500K");
+        setPrice(yearBilling ? (24 - 24 * 0.25) * 12 : 24);
+        break;
+      }
+      case 5: {
+        setNumberViews("1M");
+        setPrice(yearBilling ? (36 - 36 * 0.25) * 12 : 36);
+        break;
+      }
+      default: {
+        setNumberViews("100K");
+        setPrice(yearBilling ? (16 - 16 * 0.25) * 12 : 16);
+        break;
+      }
     }
   };
 
@@ -69,7 +87,7 @@ const App: React.FC = () => {
               <div className="flex flex-col-reverse  lg:flex-col lg:pt-0 w-full pt-4 gap-4">
                 <div className="flex flex-row items-center lg:items-center justify-center gap-2 lg:relative lg:top-[-33px] lg:left-[125px]">
                   <span className="text-4xl font-bold">
-                    $<span>{price}</span>.00
+                    $<span>{price.toFixed(2)}</span>
                   </span>
                   <p>{yearBilling ? "/year" : "/month"}</p>
                 </div>
