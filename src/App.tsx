@@ -8,6 +8,11 @@ const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<number>(3);
   const [numberViews, setNumberViews] = useState<string>("100K");
   const [price, setPrice] = useState<number>(16);
+  const liArr: { words: string }[] = [
+    { words: "Unlimited websites" },
+    { words: "100% data ownership" },
+    { words: "Email reports" },
+  ];
 
   const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value);
@@ -127,15 +132,11 @@ const App: React.FC = () => {
 
             <div className="flex flex-col items-center gap-8 lg:justify-between lg:flex-row">
               <ul className="flex flex-col items-center gap-2 lg:items-start">
-                <li className="text-sm flex flex-row items-center gap-4 lg:gap-2">
-                  <IconCheck /> Unlimited websites
-                </li>
-                <li className="text-sm flex flex-row items-center gap-4 lg:gap-2">
-                  <IconCheck /> 100% data ownership
-                </li>
-                <li className="text-sm flex flex-row items-center gap-4 lg:gap-2">
-                  <IconCheck /> Email reports
-                </li>
+                {liArr.map((key) => (
+                  <li className="text-sm flex flex-row items-center gap-4 lg:gap-2">
+                    <IconCheck /> {key.words}
+                  </li>
+                ))}
               </ul>
               <button className="bg-blue-950 rounded-3xl text-white px-10 py-2" type="submit">
                 Start my trial
